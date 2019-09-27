@@ -1,74 +1,71 @@
-<template lang="html">
-  <div ref="parentSidebar" id="parentx">
-    <vs-button @click="active=!active" color="primary" type="filled">Open Sidebar</vs-button>
-    <vs-sidebar :parent="$refs.parentSidebar" default-index="1"  color="primary" class="sidebarx" spacer v-model="active">
-
-      <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src="https://randomuser.me/api/portraits/men/85.jpg"/>
-        <h4>My Name<vs-button color="primary" icon="more_horiz" type="flat"></vs-button></h4>
+<template>
+  <div class="container-fluid">
+    <div class="col col-md-3">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Files</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">253</span> New
+              </li>
+              <li class="list-group-item">
+                <span class="badge">17</span> Deleted
+              </li>
+              <li class="list-group-item">
+                <span class="badge">3</span> Reported
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Blog</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">12</span> New
+              </li>
+              <li class="list-group-item">
+                <span class="badge">5</span> Deleted
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Settings</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <span class="badge">1</span> Users Reported
+              </li>
+              <li class="list-group-item">
+                <span class="badge">5</span> User Waiting Activation
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <vs-sidebar-item index="1" icon="question_answer">Dashboard</vs-sidebar-item>
-      <vs-sidebar-item index="2" icon="gavel">History</vs-sidebar-item>
-      <vs-divider icon="person" position="left">User</vs-divider>
-      <vs-sidebar-item index="3" icon="verified_user">Configurations</vs-sidebar-item>
-      <vs-sidebar-item index="4" icon="account_box">Profile</vs-sidebar-item>
-      <vs-sidebar-item index="5" >Card</vs-sidebar-item>
-
-      <div class="footer-sidebar" slot="footer">
-        <vs-button icon="reply" color="danger" type="flat">log out</vs-button>
-        <vs-button icon="settings" color="primary" type="border"></vs-button>
-      </div>
-    </vs-sidebar>
+    </div>
   </div>
 </template>
 
 <script>
+import ROUTER from "router";
 export default {
-  data: () => ({
-    active: false
-  })
+
 };
+
 </script>
-<style scoped>
-#background {
-  background-image: url("https://www.itseducation.asia/assets/images/bg-1005.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-size: 100%;
-  padding-top: 15%;
-  padding-bottom: 10%;
-}
-#parentx {
-  overflow: hidden;
-  height: 500px;
-  position: relative;
-}
-.header-sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-}
-h4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-button {
-  margin-left: 10px;
-}
-.footer-sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-button {
-  border: 0px solid rgba(0, 0, 0, 0) !important;
-  border-left: 1px solid rgba(0, 0, 0, 0.07) !important;
-  border-radius: 0px !important;
-}
-</style>
+

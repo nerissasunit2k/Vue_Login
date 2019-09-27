@@ -2,23 +2,25 @@
   <div id="app">
   <Header></Header>
   <AppBody></AppBody>
+  <Sidebar>
+    <span class="glyphicon glyphicon-envelope"></span>
+  </Sidebar>
   </div>
 </template>
 
 <script>
-
-// import Register from './modules/Register.vue'
+import Sidebar from 'components/frame/Sidebar.vue'
 import Header from './components/frame/Header.vue'
-//import Body from './components/frame/Body.vue'
 import AppBody from './components/frame/Body.vue'
-import { SidebarMenu } from 'vue-sidebar-menu'
 
 export default {
   name: 'app',
   components: {
     Header,
     AppBody,
-    SidebarMenu
+    Sidebar
   }
 }
 </script>
+<style scoped>
+</style>
