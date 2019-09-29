@@ -13,20 +13,22 @@ export default {
           hiddenOnCollapse: true
         },
         {
+          href: "/Dashboard",
           title: "Dashboard",
+          icon: "fa fa-chart-area",
         },
         {
-          href: "/charts",
+          href: "/Subjects",
           title: "Subjects",
           icon: "fa fa-chart-area",
         },
         {
-          href: "/charts",
+          href: "/Personalinfo",
           title: "Personal Info",
           icon: "fa fa-chart-area",
         },
         {
-          href: "/charts",
+          href: "/Logout",
           title: "Logout",
           icon: "fa fa-chart-area",
         }

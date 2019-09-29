@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-  <Header></Header>
+    <Header v-show = "$route.path === '/Login' || $route.path === '/Register'|| $route.path === '/' ? true: false"></Header>
   <AppBody></AppBody>
+  <Sidebar v-show = "$route.path === '/Dashboard'">
+  </Sidebar>
   <Sidebar>
     <span class="glyphicon glyphicon-envelope"></span>
   </Sidebar>
