@@ -1,81 +1,110 @@
-
 <template>
-    <div id = "body">
-    <b-container class="bv-example-row">
-      <b-row id = "row">
-        <b-col>
+<body id="app">
+  <b-container class="bv-example-row">
+    <b-row>
+      <b-col></b-col>
+      <b-col id = "top" cols="5">
+        <b-card 
+         title="SIGN UP"
+          style="margin-top:20%"
+        ></b-card>
+        <br>
+          <b-form @submit="onSubmit" v-if="show">
+            <b-form-group id="UserName" label="Username" label-for="username">
+              <b-form-input
+                id="username"
+                v-model="form.username"
+                type="text"
+                required
+                placeholder="Enter UserName"
+              ></b-form-input>
+            </b-form-group>
 
-        </b-col>
-        <b-col id="top" cols = "8">
+            <b-form-group id="emailAddress" label="Email Address" label-for="userEmail">
+              <b-form-input
+                id="userEmail"
+                v-model="form.userEmail"
+                type="email"
+                required
+                placeholder="Enter Email"
+              ></b-form-input>
+            </b-form-group>
 
-        <b-form @submit="onSubmit">
-          <b-form-group id="input-group-0" label="Username" label-for="input-0">
-            <b-form-input id="input-0" v-model="form.username" type="text" required placeholder="Username"></b-form-input>
-          </b-form-group>
+            <b-form-group id="initialUserPassword" label="Password" label-for="initialPassword">
+              <b-form-input
+                id="initialPassword"
+                v-model="form.password"
+                type="password"
+                required
+                placeholder="Password"
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group id="input-group-1" label="Email" label-for="input-1">
-            <b-form-input id="input-1" v-model="form.email" type="email" required placeholder="Email"></b-form-input>
-          </b-form-group>
+            <b-form-group id="confirmPassword" label="Confirmed Passsword" label-for="confirmPassword">
+              <b-form-input
+                id="confirmPassword"
+                v-model="form.confirmPassword"
+                type="password"
+                required
+                placeholder="Confirm Password"
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group id="input-group-2" label="Password" label-for="input-2">
-            <b-form-input id="input-2" v-model="form.password" required placeholder="Password" type="password"></b-form-input>
-          </b-form-group>
-          
-          <b-form-group id="input-group-3" label="ConfirmPassword" label-for="input-3">
-            <b-form-input id="input-3" v-model="form.confirmPassword" required placeholder="Confirm Password" type="password"></b-form-input>
-          </b-form-group>
+            <center><b-button type="submit" variant="primary">Submit</b-button></center>
+          </b-form><br>
+             <p>Already have an account?</p>
+        <router-link to="/Login">Login</router-link>
 
-          <b-button id="login" type="submit" block variant="primary">Sign Up</b-button><br>
-        </b-form>
-        
-        </b-col>
-        <b-col>
+      </b-col>
 
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+      <b-col></b-col>
+    </b-row>
+  </b-container>
+</body>
 </template>
-
 <script>
 import AUTH from 'services/auth'
-// import ROUTER from 'router'
 export default {
   data() {
     return {
-      auth: AUTH,
       form: {
         username: "",
-        email: "",
-        password: "",
+        userEmail: "",
+        initialPassword: "",
         confirmPassword: "",
       },
       show: true
     };
   },
-  methods: {
-    onSubmit(evt) {
+   methods: {
+     onSubmit(evt){
       evt.preventDefault();
-      sessionStorage.setItem("Password", this.form.password)
       sessionStorage.setItem("Username", this.form.username)
-      sessionStorage.setItem("Email", this.form.email)
+      sessionStorage.setItem("Email", this.form.userEmail)
+      sessionStorage.setItem("Password", this.form.password)
       AUTH.register(this.form.email, this.form.password)
-      // ROUTER.push('/login')
+     }
+      // checkForm(event) {
+      //   event.preventDefault();
+      //   event.target.classList.add('was-validated');
+      // }
     }
-  }
 };
 </script>
 
-<style scoped lang="scss">
-@import "~assets/colors.scss";
-#top{
-  background-color: $bckg_color !important;
-	padding: 3vw 4vw 5vw;
-  border-radius: 4px;
-  box-shadow: 2px 5px 16px 2px rgba(16, 16, 16, 0.18);
-  text-align: center;
-  margin-top: 60px;
+<style scoped>
+#body {
+  background-image:url(https://thumbs.dreamstime.com/b/tropical-beach-sand-summer-holiday-background-travel-vacation-free-space-text-product-placement-93404396.jpg);
+  background-size: cover;
 }
-/* #login {length: 20px; } */
+
+#top{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCuAxu_07_sc_sA-NA_bXTY4NuIUB7CoxgclMx24fcUdvTsUHt);
+  background-size: cover;
+  padding: 3vw 4vw 5vw;
+  border-radius: 4px;
+  text-align: center;
+  margin-top:5%;
+}
 
 </style>

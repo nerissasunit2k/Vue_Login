@@ -9,31 +9,26 @@ export default {
       menu: [
         {
           header: true,
-          title: "Main Navigation",
+          title: "Main Menu",
           hiddenOnCollapse: true
         },
         {
-          href: "/Dashboard",
-          title: "Dashboard",
-          icon: "fa fa-chart-area",
+          href: "/Account",
+          title: "Account",
+          icon: "assets/User.png",
         },
         {
           href: "/Subjects",
           title: "Subjects",
-          icon: "fa fa-chart-area",
+          icon: "assets/User.png",
         },
         {
-          href: "/Personalinfo",
-          title: "Personal Info",
-          icon: "fa fa-chart-area",
-        },
-        {
-          href: "/Logout",
+          href: "/Login",
           title: "Logout",
-          icon: "fa fa-chart-area",
+          icon: "assets/User.png",
         }
       ]
-    };
+    }
   }
 };
 </script> 

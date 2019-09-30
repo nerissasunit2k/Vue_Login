@@ -5,8 +5,7 @@
         <b-col>
 
         </b-col>
-        <b-col id="top" cols = "8">
-
+        <b-col id="top" cols = "5">
         <b-form @submit="onSubmit" @reset="onReset">
           <b-form-group
             id="input-group-1"
@@ -26,8 +25,8 @@
             <b-form-input id="input-2" v-model="form.password" required placeholder="Password" type="password"></b-form-input>
           </b-form-group>
 
-          <b-button id="login" type="submit" variant="primary">Log in</b-button>
-          <b-button id="reset" type="reset" variant="danger">Reset</b-button>
+          <b-button type="submit" variant="success">Log in</b-button>
+          <b-button type="reset" variant="info">Register</b-button>
         </b-form>
         
         </b-col>
@@ -53,8 +52,8 @@ export default {
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      console.log("Username: " + this.form.username);
-      console.log("Password: " + this.form.password);
+      // console.log("Username: " + this.form.username);
+      // console.log("Password: " + this.form.password);
     },
     onReset(evt) {
       evt.preventDefault();
@@ -67,12 +66,11 @@ export default {
 
 <style scoped>
 #top{
-  background-color:orangered;
-	padding: 3vw 4vw 5vw;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCuAxu_07_sc_sA-NA_bXTY4NuIUB7CoxgclMx24fcUdvTsUHt);
+  background-size: cover;
+  padding: 3vw 4vw 5vw;
   border-radius: 4px;
-  box-shadow: 2px 5px 16px 2px rgba(16, 16, 16, 0.18);
   text-align: center;
 }
-/* #login {length: 20px; } */
 
 </style>

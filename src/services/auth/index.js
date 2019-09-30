@@ -1,65 +1,35 @@
-// import Router from 'router'
-// export default{
-//     user : null,
-//     registeredUser: [],
-//     setUser(user){
-//         this.user=user
-//     },
-//     login(username,password){
-//         for(let i=0;i<this.registeredUser.length;i++){
-//             if(this.registeredUser[i].username===username&&this.registeredUser){
-//                 return this.registeredUser[i]
-//             }
-//         }
-//         return null
-//     },
-//     logout(){
-//         this.user=null
-//         Router.push('/login')
-//     }
+import ROUTER from 'router';
 
-// }
-import ROUTER from 'router'
 export default {
     user: null,
     registeredUser: [],
-    setUser(user) {
+    setUser(user){
         this.user = user
     },
-    getUser(user) {
-        this.user = user
+    getUser(user){
+        return this.user = user;
     },
-    register(username, password) {
+    register(username, password){
         this.registeredUser.push({
-        username : username,
-        password : password
+            username: username,
+            password: password,
         })
-        ROUTER.push("/Login");
+        ROUTER.push('/login')
     },
-    login(username, password) {
-        for (let i = 0; i < this.registeredUser.length; i++) {
-            if (this.registeredUser[i].username === username && this.registeredUser[i].password === password) {
-                ROUTER.push('/Dashboard')
-                return this.registeredUser[i]
-
+    login( username , password ){
+        for(let i = 0; i < this.registeredUser.length; i++){
+            if(this.registeredUser[i].username === username && this.registeredUser[i].password === password){
+                ROUTER.push('/dashboard')
+                return this.registeredUser[i]           
             }
         }
         return null
     },
-    logout() {
-        this.user = null
-        ROUTER.push('/Login')
+    logout(){
+        this.registeredUser = null
+        ROUTER.push('/login')
     },
-    addCourse(course, year){
-        this.courses.push({
-            course: course,
-            year: year,
-        });
-        var p = JSON.parse(JSON.stringify(this.courses))
-        console.log(p)
-    },
-    editProfile(){
-        ROUTER.push('/edit')
-    }
+
+    
 
 }

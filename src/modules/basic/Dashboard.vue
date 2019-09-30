@@ -1,45 +1,48 @@
 <template>
   <div id="card" >
-    <!-- <header  class="navbar navbar-light">
-      <button class="navbar-toggler sidebar-toggler" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </header> -->
-    <center>
-      <h1>DASHBOARD</h1>
-     <hr>
+    <center><hr>
+      <h2></h2>
+       <h1></h1>
       <div>
-        <b-img :src="require('assets/User.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img>
+        <b-img :src="require('assets/User.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img><hr>
       </div>
-      <h2>Hey {{Uname}} !</h2>
-      <p>Welcome to the Kat-on</p>
+      <h2>Hi {{Uname}},</h2>
+      <h2>Welcome to your Dashboard</h2>
+      <p></p>
     </center>
   </div>
 </template>
-<style lang='scss' scoped>
-@import "~assets/colors.scss";
+<style scoped>
 #card {
-  margin-top: 2em;
+  margin-top: 0px;
+  margin-left: 380px;
+  margin-bottom:0px;
+  width:560px;
+  height:700px;
 }
-// #userIcon {
-//   width: $UserIconWidth !important;
-//   height: $UserIconHeight !important;
-// }
+#userIcon {
+  width: 35%;
+  height: auto;
+}
+h2 {
+  font-size:50px;
+}
 </style>
 
 <script>
+import AUTH from "services/auth";
 export default {
   name: "card",
+  auth: AUTH,
   data() {
     return {
       Uname: sessionStorage.getItem("Username")
     };
   },
   component: {
-
   },
   methods: {
-
   }
 };
 </script>
+
