@@ -49,6 +49,17 @@ export default {
     logout() {
         this.user = null
         ROUTER.push('/Login')
+    },
+    addCourse(course, year){
+        this.courses.push({
+            course: course,
+            year: year,
+        });
+        var p = JSON.parse(JSON.stringify(this.courses))
+        console.log(p)
+    },
+    editProfile(){
+        ROUTER.push('/edit')
     }
 
 }

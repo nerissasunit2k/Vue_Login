@@ -1,89 +1,48 @@
-// export default {
-//     routes: [{
-//         path: '/Register',
-//         name: 'register',
-//         component: resolve => require(['modules/Register.vue'], resolve),
-//         meta: {
-//             tokenRequired: false
-//         }
-//     },
-//     {
-//         path: '/Login',
-//         name: 'login',
-//         component: resolve => require(['modules/Login.vue'], resolve),
-//         meta: {
-//             tokenRequired: false
-//         }
-//     },
-//     {
-//     path: '/Dashboard',
-//     name: 'dashboard',
-//     component: resolve => require(['components/frame/Dashboard.vue'],resolve),
-//     meta: {
-//         tokenRequired: false
-//     }
-//     }
-
-// ]
-// }
-// export default {
-//     routes: [{
-//         path: '/Login',
-//         name: 'login',
-//         component: resolve => require(['modules/Login.vue'], resolve),
-//         meta: {
-//             tokenRequired: false
-//         }
-//     },
-//     {
-//         path: '/Register',
-//         name: 'register',
-//         component: resolve => require(['modules/Register.vue'], resolve),
-//         meta: {
-//             tokenRequired: false
-//         },
-//     }]
-// }
 export default {
     routes: [{
-        path: '/Login',
+        path: '/login',
         name: 'login',
-        component: resolve => require(['modules/Login.vue'], resolve),
+        component: resolve => require(['modules/basic/Login.vue'], resolve),
         meta: {
             tokenRequired: false
         }
-    },
-    {
-        path: '/Register',
+    }, {
+        path: '/register',
         name: 'register',
-        component: resolve => require(['modules/Register.vue'], resolve),
+        component: resolve => require(['modules/basic/Register.vue'], resolve),
         meta: {
             tokenRequired: false
-            }
-        },{
-        path: '/Dashboard',
-        name: 'Dashboard',
-        component: resolve => require(['components/frame/Dashboard.vue'], resolve),
+        }
+
+    }, {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: resolve => require(['modules/basic/Dashboard.vue'], resolve),
         meta: {
-            tokenRequired: false
-        },
-        // path: '/Subjects',
-        // name: 'Subjects',
-        // component: resolve => require(['modules/Subjects.vue'], resolve),
-        // meta: {
-        //     tokenRequired: false
-        // },
-        // path: '/Dashboard',
-        // name: 'Dashboard',
-        // component: resolve => require(['modules/Dashboard.vue'], resolve),
-        // meta: {
-        //     tokenRequired: false
-        // },
-        // path: '/Dashboard',
-        // name: 'Dashboard',
-        // component: resolve => require(['modules/Dashboard.vue'], resolve),
-        // meta: {
-        //     tokenRequired: false
-        // },
-    }]
+            tokenRequired: true
+        }
+    }, {
+        path: '/personalinformation',
+        name: 'personalinformation',
+        component: resolve => require(['modules/basic/PersonalInfo.vue'], resolve),
+        meta: {
+            tokenRequired: true
+        }
+    }, {
+        path: '/courses',
+        name: 'courses',
+        component: resolve => require(['modules/basic/course.vue'], resolve),
+        meta: {
+            tokenRequired: true
+        }
+    }, {
+        path: '/edit',
+        name: 'edit',
+        component: resolve => require(['modules/basic/EditProfile.vue'], resolve),
+        meta: {
+            tokenRequired: true
+        }
+    }
+
+    ]
 }
