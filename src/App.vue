@@ -27,7 +27,7 @@ export default {
 </script>
 <style>
 #app{
-  background-image:url(https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467_960_720.jpg);
+  background-image:url(https://previews.123rf.com/images/stori/stori1603/stori160300019/54292054-beautiful-flowers-romantic-pink-veil-on-white-best-romantic-flower-background.jpg);
   background-size:cover;
 }
 </style>

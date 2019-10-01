@@ -4,7 +4,7 @@
       <h2></h2>
        <h1></h1>
       <div>
-        <b-img :src="require('assets/User.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img><hr>
+        <b-img :src="require('assets/Nerissa.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img><hr>
       </div>
       <h2>Hi {{Uname}},</h2>
       <h2>Welcome to your Dashboard</h2>

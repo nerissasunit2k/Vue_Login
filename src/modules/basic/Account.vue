@@ -1,52 +1,52 @@
 <template>
-  <div id="container">
-    <div class="jumbotron">
-    </div>
-    <div id="card">
-     <center><div>
-        <b-img :src="require('assets/User.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img>
-      </div></center><hr>
-      <b-card no-body class="overflow-hidden" style="max-height: 560px;" >
+  <div>
+    <br>
+    <br>
+    <div class="mt-3">
+      <b-card no-body class="overflow-hidden" style="max-width: 540px;">
         <b-row no-gutters>
-          <b-col md="12">
-          <center><b-card-body title="Personal Information"> 
-                <hr>
-                <b-card-text>
-                <h6>Username: {{username}}</h6>
-                <h6>Email:{{email}}</h6>
-                <h6 type="password">Password: {{password}}</h6>
-              </b-card-text>
+          <b-col md="5">
+            <b-card-img :src="require('assets/Nerissa.png')" class="rounded-0" id="userIcon"></b-card-img>
+          </b-col>
+          <b-col md="7">
+            <b-card-body title="Personal Information">
+              <b-card-text>Name: {{Uname}}</b-card-text>
+              <b-card-text>Email: {{Email}}</b-card-text>
+              <b-card-text>Password: ******</b-card-text>
             </b-card-body>
-            </center>
           </b-col>
         </b-row>
       </b-card>
     </div>
   </div>
 </template>
-
-<style>
-.jumbotron{
-    padding: 20px;
-    text-align: center;
-    margin-bottom:0px;
+<style lang="scss" scoped>
+@import "~assets/colors.scss";
+#userIcon {
+  padding: 2em;
+  width: 110%;
+  height: auto;
 }
-#card {
-    margin-top: 79px;
-    margin-left: 380px;
-    width:560px;
-    height:700px;
+b-card-text {
+  text-align: left;
 }
-
+.mt-3 {
+  margin: 30%;
+  box-shadow: 5px 10px 18px #888888;
+  //   background-color: $bckg_color !important;
+}
 </style>
+
 <script>
+// import ROUTER from 'router'
+import AUTH from 'services/auth'
 export default {
-  // name: "container",
   data() {
     return {
-      username: sessionStorage.getItem("Username"),
-      email: sessionStorage.getItem("Email"),
-      password: sessionStorage.getItem("Password")
+      auth: AUTH,
+      Uname: sessionStorage.getItem("Username"),
+      Email: sessionStorage.getItem("Email"),
+      Pass: sessionStorage.getItem("Password")
     };
   },
 };

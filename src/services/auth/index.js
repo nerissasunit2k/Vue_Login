@@ -29,7 +29,25 @@ export default {
         this.registeredUser = null
         ROUTER.push('/login')
     },
-
+    addCourse(course, year, schedule, room, teacher) {
+        this.courses.push({
+            course: course,
+            year: year,
+            schedule: schedule,
+            room: room,
+            teacher: teacher,
+        });
     
+    },
+    save(username, email, password) {
+        for (let i = 0; i < this.registeredUser.length; i++) {
+            this.registeredUser[i].username = username,
+                this.registeredUser[i].email = email,
+                this.registeredUser[i].password = password
+        }
+        alert('Update Succesfully!')
+        
+        ROUTER.push('/personalInformation')
+    }
 
 }

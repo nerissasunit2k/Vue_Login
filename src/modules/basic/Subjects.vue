@@ -1,103 +1,108 @@
 <template>
-  <div>
-    <div class="jumbotron">
-      <h1>Subjects</h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <center>
-            <b-card id="card">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">SUBJECT</th>
-                    <th scope="col">TEACHER</th>
-                    <th scope="col">TIME </th>
-                    <th scope="col">DAY</th>
-                    <th scope="col">VENUE</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <ul>
-                    <li> {{subject}}</li>
-                    <li> {{techer}}</li>
-                    <li> {{time}}</li>
-                    <li> {{subject}}</li>
-                    <li> {{day}}</li>
-                    <li> {{venue}}</li>
-                    <!-- <li v-for="list">{{ content.subject}}</li> -->
-                  </ul>
-                  <hr>
-                </tbody>
-              </table>
-            </b-card>
-          </center>
-        </div>
-        <div class="col">
-          <b-card id="card1">
-            <b-form-group >
-              <label id="Subject">Subject:</label>
-              <b-form-input v-model="content.subject" size="sm"></b-form-input>
-              <label id="teacher">Teacher:</label>
-              <b-form-input v-model="content.teacher" size="sm"></b-form-input>
-              <label id="time">Time:</label>
-              <b-form-input v-model="content.time" size="sm"></b-form-input>
-              <label id="time">Day:</label>
-              <b-form-input v-model="content.day" size="sm"></b-form-input>
-              <label id="venue">Venue:</label>
-              <b-form-input v-model="content.venue" size="sm"></b-form-input>
+  <div id="card">
+    <center>
+      <div class = "courses"> 
+        <h1></h1>
+      </div>
+      <hr>
+      
+      <b-card>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Course</th>
+              <th scope="col">Year</th>
+              <th scope="col">Schedule</th>
+              <th scope="col">Room</th>
+              <th scope="col">Teacher</th>              
+            </tr>
+          </thead>
+          <tbody v-for="(item, index) in this.rows" :key="index">
+            <tr>
+              <td>{{ item.course }}</td>
+              <td>{{ item.year }}</td>
+              <td>{{ item.schedule }}</td>
+              <td>{{ item.room }}</td>
+              <td>{{ item.teacher }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </b-card>
+      <hr>
+      <div id="porm">
+        <b-button block variant="outline-primary" v-b-toggle.collapse-2 class="m-1">Add Course</b-button>
+        <b-collapse id="collapse-2">
+          <b-card>
+            <b-form-group>
+              <label id="course">Course:</label>
+              <b-form-input required v-model="info.course" id="subject"></b-form-input>
               <br>
-              <center>
-                <b-button variant="primary" @click="submit">Add Subject</b-button>
-              </center>
+              <label id="year">Year:</label>
+              <b-form-input required v-model="info.year" id="year"></b-form-input>
+              <br>
+              <label id="sched">Schedule:</label>
+              <b-form-input required v-model="info.schedule" id="time"></b-form-input>
+              <br>
+              <label id="room">Room:</label>
+              <b-form-input required v-model="info.room" id="room"></b-form-input>
+              <br>
+              <label id="teacher">Teacher:</label>
+              <b-form-input required v-model="info.teacher" id="teacher"></b-form-input>
+              <br>
+              <b-button variant="primary" @click="addItem">Add Subject</b-button>
             </b-form-group>
           </b-card>
-        </div>
+        </b-collapse>
       </div>
-    </div>
+    </center>
   </div>
 </template>
 
 
 <style>
-/* #card {
-  margin-top: 20px;
-} */
-.jumbotron {
-  padding: 20px;
-  text-align: center;
-}
 #card {
-  width: 400px;
+  max-width: 50%;
+  margin-left: 25%;
+  margin-top: 2em;
 }
-#card1 {
-  width: 400px;
+#Courses {
+  text-align: center;
 }
 </style>
 
 <script>
+import AUTH from 'services/auth'
 export default {
-  data(){
+  data() {
     return {
-      content: {
-        subject: "",
-        teacher: "",
-        time: "",
-        day: "",
-        venue: ""
+      auth: AUTH,
+      rows: [],
+      info: {
+        course: "",
+        year: "",
+        schedule: "",
+        room: "",
+        teacher: ""
       }
     };
   },
   methods: {
-    submit: function(e) {
-      e.preventDefault();
-      sessionStorage.getItem("Subject", this.content.subject),
-        sessionStorage.getItem("Teacher", this.content.teacher),
-        sessionStorage.getItem("Time", this.content.time),
-        sessionStorage.getItem("Day", this.content.day),
-        sessionStorage.getItem("Venue", this.content.venue);
+    addItem() {
+      var object = {
+        course: this.info.course,
+        year: this.info.year,
+        schedule: this.info.schedule,
+        room: this.info.room,
+        teacher: this.info.teacher,
+      };
+      this.rows.push(object);
+      this.info.course = "";
+      this.info.year= "",
+      this.info.schedule = "";
+      this.info.room = "";
+      this.info.teacher = "";
+      
     }
   }
 };
-</script>
+</script> 
