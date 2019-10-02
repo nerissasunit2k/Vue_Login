@@ -4,8 +4,8 @@
     <b-navbar-brand href="#" class="text text-light" id="title">Kat-on</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
+    
+    <b-collapse id="nav-collapse" is-nav v-if="auth.user == null">
       <b-navbar-nav>
         <b-nav-item  v-on:click = "redirect('/Login')" class="text text-light" id="login">Login</b-nav-item>
         <b-nav-item  v-on:click = "redirect('/Register')" class="text text-light" id="signup">Sign Up</b-nav-item>
@@ -30,7 +30,13 @@
 </style>
 <script>
   import ROUTER from 'router'
+  import AUTH from 'services/auth'
   export default {
+    data(){
+      return{
+        auth: AUTH
+      }
+    },
       methods: {
           redirect(router){
               ROUTER.push(router)

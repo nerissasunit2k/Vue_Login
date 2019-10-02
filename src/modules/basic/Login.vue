@@ -63,8 +63,17 @@ import AUTH from 'services/auth'
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      AUTH.login(this.form.email, this.form.password)
-      console.log(JSON.stringify(this.form));
+      let user = AUTH.login(this.form.email, this.form.password)
+      if (this.username == "" || this.password == "") {
+        alert("Please provide inputs!");
+      }else{
+        alert("You are now registered")
+        ROUTER.push('/Register')
+        AUTH.setUser(user);
+        if (user !== null) {
+          ROUTER.push("/Dashboard");
+        }
+      }
     }
   }
 };
