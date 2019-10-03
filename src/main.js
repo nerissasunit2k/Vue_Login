@@ -17,4 +17,3 @@ new Vue({
   router: router,
   template: '<router-view></router-view>'
 }).$mount('#app')
-

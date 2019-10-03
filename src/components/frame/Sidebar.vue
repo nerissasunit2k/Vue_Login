@@ -15,17 +15,17 @@ export default {
         {
           href: "/Account",
           title: "Account",
-          icon: "assets/User.png",
+          icon: "assets/Nerissa.png",
         },
         {
           href: "/Subjects",
           title: "Subjects",
-          icon: "assets/User.png",
+          icon: "assets/Nerissa.png",
         },
         {
           href: "/Login",
           title: "Logout",
-          icon: "assets/User.png",
+          icon: "assets/Nerissa.png",
         }
       ]
     }

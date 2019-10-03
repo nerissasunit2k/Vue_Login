@@ -61,10 +61,19 @@ import AUTH from 'services/auth'
     };
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      AUTH.login(this.form.email, this.form.password)
-      console.log(JSON.stringify(this.form));
+    submit: function(e) {
+      e.preventDefault();
+      let user = AUTH.login(this.username, this.password);
+      if (this.username == "" || this.password == "") {
+        this.$swal.fire("Please provide inputs","Inputs are required!","warning");
+      } else {
+        this.$swal.fire("Please register first!","You need to register!","error");
+        AUTH.setUser(user);
+        if (user !== null) {
+          this.$swal.fire("Successfully Login!","Nice one!","success");
+          ROUTER.push("/Dashboard");
+        }
+      }
     }
   }
 };
