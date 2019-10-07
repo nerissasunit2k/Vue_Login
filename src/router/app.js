@@ -44,6 +44,15 @@ export default {
         component: resolve => require(['modules/basic/Update.vue'], resolve),
         meta: {
             tokenRequired: false
-        },
+        }
+    },
+     {
+        path: '/Logout',
+        name: 'logout',
+        component: resolve => require(['modules/basic/Logout.vue'], resolve),
+        meta: {
+            tokenRequired: true
+            }
+    
     }]
 }
