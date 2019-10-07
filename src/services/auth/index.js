@@ -44,20 +44,13 @@ export default {
         });
     
     },
-    update(username,password) {
+    Update(username,password) {
         this.username =username;
         this.password =password;
         ROUTER.push('/Update')
     },
-    save(username, email, password) {
-        for (let i = 0; i < this.registeredUser.length; i++) {
-            this.registeredUser[i].username = username,
-                this.registeredUser[i].email = email,
-                this.registeredUser[i].password = password
-        }
-        alert('Update Succesfully!')
-        
-        ROUTER.push('/personalInformation')
+    save() {
+        this.user = null
+        ROUTER.push('/Account')
     }
-
 }

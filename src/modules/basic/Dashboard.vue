@@ -7,7 +7,7 @@
         <b-img :src="require('assets/Nerissa.png')" rounded="circle" alt="Circle image" id="userIcon"></b-img><hr>
       </div>
       <h2>Hi {{Uname}},</h2>
-      <h2>Welcome to your Dashboard</h2>
+      <h2>Welcome to Kat-on</h2>
       <p></p>
     </center>
   </div>
@@ -39,10 +39,7 @@ export default {
       Uname: sessionStorage.getItem("Username")
     };
   },
-  component: {
-  },
-  methods: {
-  }
+  
 };
 </script>
 

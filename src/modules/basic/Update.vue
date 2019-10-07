@@ -5,7 +5,7 @@
       <div class="col-md-4">
         <div class="container">
           <div class="card">
-            <div class="card-header">UPDATE INFO</div>
+            <div class="card-header">UPDATE INFORMATION</div>
             <div class="card-body">
               <div class="form-group">
                 <label for="username" class="bmd-label-floating">Username</label>
@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import ROUTER from "router";
-import AUTH from "services/auth";
+// import ROUTER from "router"
+import AUTH from "services/auth"
 export default {
   data() {
     AUTH;
@@ -60,7 +60,7 @@ export default {
       ) {
         this.$swal.fire("Please provide inputs","Inputs are needed!","warning");
       } else {
-        this.$swal.fire("Ypur profile has been changed!","Perfect!","success");
+        this.$swal.fire("Your profile has been changed!","Perfect!","success");
         AUTH.save(this.username, this.email, this.password);
       }
     }

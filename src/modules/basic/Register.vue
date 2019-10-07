@@ -1,110 +1,145 @@
+  
 <template>
-<body id="app">
-  <b-container class="bv-example-row">
-    <b-row>
-      <b-col></b-col>
-      <b-col id = "top" cols="5">
-        <b-card 
-         title="SIGN UP"
-          style="margin-top:20%"
-        ></b-card>
-        <br>
-          <b-form @submit="onSubmit" v-if="show">
-            <b-form-group id="UserName" label="Username" label-for="username">
-              <b-form-input
-                id="username"
-                v-model="form.username"
-                type="text"
-                required
-                placeholder="Enter UserName"
-              ></b-form-input>
-            </b-form-group>
-
-            <b-form-group id="emailAddress" label="Email Address" label-for="userEmail">
-              <b-form-input
-                id="userEmail"
-                v-model="form.userEmail"
-                type="email"
-                required
-                placeholder="Enter Email"
-              ></b-form-input>
-            </b-form-group>
-
-            <b-form-group id="initialUserPassword" label="Password" label-for="initialPassword">
-              <b-form-input
-                id="initialPassword"
-                v-model="form.password"
-                type="password"
-                required
-                placeholder="Password"
-              ></b-form-input>
-            </b-form-group>
-
-            <b-form-group id="confirmPassword" label="Confirmed Passsword" label-for="confirmPassword">
-              <b-form-input
-                id="confirmPassword"
-                v-model="form.confirmPassword"
-                type="password"
-                required
-                placeholder="Confirm Password"
-              ></b-form-input>
-            </b-form-group>
-
-            <center><b-button type="submit" variant="primary">Submit</b-button></center>
-          </b-form><br>
-             <p>Already have an account?</p>
+  <center>
+    <div
+      data-toggle="collapse"
+      id="divFrom"
+      class="col-sm-3 my-sm-5 border rounded"
+      style="margin-left:0.5%"
+    >
+      <form class="container">
+        <center>
+          <h1>Register</h1>
+        </center>
+        <hr />
+        <div>
+          <div class="row">
+            <label id="username" for="inputfname">Username:</label>
+            <input
+              v-model="content.username"
+              class="form-control"
+              name="username"
+              placeholder="Enter Username"
+              required
+            />
+          </div>
+          <br />
+          <div class="row">
+            <label id="email" for="inputEmail">Email:</label>
+            <input
+              required
+              type="email"
+              class="form-control"
+              v-model="content.email"
+              placeholder="Enter Email"
+            />
+          </div>
+          <br />
+          <div class="row">
+            <label id="pass" for="inputPassword">Password:</label>
+            <input
+              required
+              type="password"
+              v-model="content.password"
+              class="form-control"
+              name="password"
+              id="inputPassword4"
+              placeholder="Password"
+            />
+            <br />
+            <br />
+          </div>
+          <div class="row">
+            <label id="conpass" for="inputConPassword">Confirm Password:</label>
+            <input
+              v-model="content.conpassword"
+              required
+              type="password"
+              class="form-control"
+              id="inputConPassword"
+              placeholder="Confirm Password"
+            />
+            <span></span>
+            <br />
+            <br />
+          </div>
+        </div>
+        <button id="btnSubmit" type="submit" class="btn btn-primary" @click="submit">
+          <h6>Register</h6>
+        </button>
+        <br />
+        <p>Already have an account?</p>
         <router-link to="/Login">Login</router-link>
-
-      </b-col>
-
-      <b-col></b-col>
-    </b-row>
-  </b-container>
-</body>
+        <br />
+      </form>
+    </div>
+  </center>
 </template>
+<style scoped lang="scss">
+@import "assets/colors.scss";
+h1 {
+  color: $warning !important;
+}
+#username {
+  color: $warning !important;
+}
+#pass {
+  color: $warning !important;
+}
+#email {
+  color: $warning !important;
+}
+#conpass {
+  color: $warning !important;
+}
+p {
+  color: $warning !important;
+}
+</style>
 <script>
-import AUTH from 'services/auth'
+import AUTH from "services/auth";
+import jquery from "jquery";
 export default {
   data() {
     return {
-      form: {
+      auth: AUTH,
+      content: {
         username: "",
-        userEmail: "",
-        initialPassword: "",
-        confirmPassword: "",
-      },
-      show: true
+        email: "",
+        password: "",
+        conpassword: ""
+      }
     };
   },
-   methods: {
-     submit: function(e) {
+  methods: {
+    submit: function(e) {
       e.preventDefault();
-      sessionStorage.setItem("Username", this.form.username),
-      sessionStorage.setItem("Email", this.form.userEmail),
-      sessionStorage.setItem("Password", this.form.password);
-     if (
-        this.form.username == "" ||
-        this.form.email == "" ||
-        this.form.password == "" ||
-        this.form.confirmPassword == ""
+      sessionStorage.setItem("Username", this.content.username),
+        sessionStorage.setItem("Email", this.content.email),
+        sessionStorage.setItem("Password", this.content.password);
+      if (
+        this.content.username == "" ||
+        this.content.email == "" ||
+        this.content.password == "" ||
+        this.content.conpassword == ""
       ) {
         this.$swal.fire(
           "Please provide inputs",
           "Inputs are needed!",
           "warning"
         );
-      } else if (this.form.password != this.form.confirmPassword) {
-        this.$swal.fire("Password Mismatch!", "Need a Proper Typing!", "error");
+      } else if (this.content.password != this.content.conpassword) {
+        this.$swal.fire("Password Mismatch!", "You must type properly!", "error");
       } else {
         AUTH.register(
-          this.form.username,
-          this.form.password,
-          this.form.email,
-          this.form.confirmPassword
+          this.content.username,
+          this.content.password,
+          this.content.email,
+          this.content.conpassword
         );
-        this.$swal.fire("You are now registered!", "Great!", "success");
+        this.$swal.fire("You are now registered!", "Excellent!", "success");
       }
-      let link = `http://localhost:3000/db/create/${this.form.username}/ ${this.form.email}/${this.form.password}`;
+      let link = `http://localhost:3000/db/create/${this.content.username}/ ${this.content.email}/${this.content.password}`;
       jquery.ajax({
           url: link,
           method: "GET",
@@ -119,7 +154,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 #body {
   background-image:url(https://thumbs.dreamstime.com/b/tropical-beach-sand-summer-holiday-background-travel-vacation-free-space-text-product-placement-93404396.jpg);

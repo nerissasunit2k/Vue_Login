@@ -1,53 +1,59 @@
 <template>
-
-  <b-container class="bv-example-row">
-    <b-row>
-      <b-col></b-col>
-     <b-col id="top" cols="5">
-        <b-card
-         title="LOGIN"
-          style="margin-top:20%"
-        ></b-card>
-      <br>
-        <b-form @submit="onSubmit" v-if="show">
-          <b-form-group id="username" label="Username" label-for="username" >
-            <b-form-input
-              id="username"
-              v-model="form.username"
+  <div id="background" style="padding-top:20px;">
+    <center>
+      <div id="divLogin" class="col-sm-3 my-sm-5 border rounded" style="margin-left:0.5%">
+        <form class="container">
+          <center>
+            <h1>Login</h1>
+          </center>
+          <hr />
+          <div class="row">
+            <label id="username" for="loginUsername">Username:</label>
+            <input
               required
+              v-model="username"
+              name="username"
+              class="form-control"
               placeholder="Enter Username"
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="Password" label="Password" label-for="password">
-            <b-form-input
-              id="password"
-              v-model="form.password"
-              type="password"
+            />
+            <br />
+          </div>
+          <br />
+          <div class="row">
+            <label id="pass" for="loginPassword">Password:</label>
+            <input
               required
-              placeholder="Password"
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group id="rememberPassword">
-            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-              <b-form-checkbox value="me">Remember password?</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
-
-         <center><b-button type="submit" variant="primary">Login</b-button></center>
-        </b-form>
-    
-      </b-col>
-
-      <b-col></b-col>
-    </b-row>
-  </b-container>
+              v-model="password"
+              type="password"
+              name="password"
+              class="form-control"
+              id="loginPassword"
+              placeholder="Enter Password"
+            />
+          </div>
+          <br />
+          <button id="btnLogin" class="btn btn-primary" @click="submit">
+            <h6>Login</h6>
+          </button>
+          <br />
+        </form>
+      </div>
+    </center>
+  </div>
 </template>
-
+<style scoped lang="scss">
+@import "assets/colors.scss";
+h1 {
+  color: $warning !important;
+}
+#username {
+  color: $warning !important;
+}
+#pass {
+  color: $warning !important;
+}
+</style>
 <script>
-//eslint-disable-next-line
-/*eslint-disable*/
 import AUTH from "services/auth";
 import ROUTER from "router";
 import jquery from "jquery";
@@ -66,18 +72,18 @@ export default {
       if (this.username == "" || this.password == "") {
         this.$swal.fire(
           "Please provide inputs",
-          "Inputs are required!",
+          "Inputs are needed!",
           "warning"
         );
       } else {
         this.$swal.fire(
           "Please register first!",
-          "You are need to register!",
+          "You must need to register!",
           "error"
         );
         AUTH.setUser(user);
         if (user !== null) {
-          this.$swal.fire("Successfully Login!", "Great!", "success");
+          this.$swal.fire("Successfully Login!", "Good Job!", "success");
           ROUTER.push("/Dashboard");
         }
       }
@@ -96,8 +102,6 @@ export default {
   }
 };
 </script>
-</script>
-
 
 <style scoped>
 #body{

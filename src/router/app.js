@@ -31,8 +31,8 @@ export default {
         }
     },
     {
-        path: '/PersonalInfo',
-        name: 'PersonalInfo',
+        path: '/Account',
+        name: 'Account',
         component: resolve => require(['modules/basic/Account.vue'], resolve),
         meta: {
             tokenRequired: true
@@ -40,7 +40,7 @@ export default {
     },
     {
         path: '/Update',
-        name: 'UpdateInfo',
+        name: 'Update',
         component: resolve => require(['modules/basic/Update.vue'], resolve),
         meta: {
             tokenRequired: false

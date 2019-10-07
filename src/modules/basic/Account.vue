@@ -42,6 +42,9 @@ b-card-text {
   box-shadow: 5px 10px 18px #888888;
   //   background-color: $bckg_color !important;
 }
+#card {
+  margin-top: 50px;
+}
 </style>
 
 <script>
@@ -57,8 +60,8 @@ export default {
     };
   },
 methods: {
-    update: function() {
-      AUTH.update(this.username, this.email, this.password);
+    Update: function() {
+      AUTH.Update(this.username, this.email, this.password);
     }
   }
 };

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-  <Header v-show = "$route.path === '/login' || $route.path === '/register'|| $route.path === '/' ? true: false"></Header>
-  <AppBody></AppBody>
-  <Sidebar v-show = "$route.path === '/dashboard' || $route.path === '/Subjects'|| $route.path === '/Account' ? true: false">
-  </Sidebar>
+  `<Header></Header>
+    <Sidebar id="side"
+    v-show="$route.path === '/Dashboard' || $route.path === '/Subjects' || $route.path === '/Account' || $route.path === '/Update'? true : false"></Sidebar>
+    <AppBody></AppBody>
     <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
@@ -11,9 +11,9 @@
 
 <script>
 // import AUTH from 'services/auth'
-import Header from 'components/frame/Header.vue'
-import AppBody from 'components/frame/Body.vue'
-import Sidebar from 'components/frame/Sidebar.vue'
+import Header from 'components/frame/Header.vue';
+import AppBody from 'components/frame/Body.vue';
+import Sidebar from 'components/frame/Sidebar.vue';
 
 export default {
   name: 'app',
