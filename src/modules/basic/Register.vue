@@ -77,18 +77,46 @@ export default {
     };
   },
    methods: {
-     onSubmit(evt){
-      evt.preventDefault();
-      sessionStorage.setItem("Username", this.form.username)
-      sessionStorage.setItem("Email", this.form.userEmail)
-      sessionStorage.setItem("Password", this.form.password)
-      AUTH.register(this.form.email, this.form.password)
-     }
-      // checkForm(event) {
-      //   event.preventDefault();
-      //   event.target.classList.add('was-validated');
-      // }
+     submit: function(e) {
+      e.preventDefault();
+      sessionStorage.setItem("Username", this.form.username),
+      sessionStorage.setItem("Email", this.form.userEmail),
+      sessionStorage.setItem("Password", this.form.password);
+     if (
+        this.form.username == "" ||
+        this.form.email == "" ||
+        this.form.password == "" ||
+        this.form.confirmPassword == ""
+      ) {
+        this.$swal.fire(
+          "Please provide inputs",
+          "Inputs are needed!",
+          "warning"
+        );
+      } else if (this.form.password != this.form.confirmPassword) {
+        this.$swal.fire("Password Mismatch!", "Need a Proper Typing!", "error");
+      } else {
+        AUTH.register(
+          this.form.username,
+          this.form.password,
+          this.form.email,
+          this.form.confirmPassword
+        );
+        this.$swal.fire("You are now registered!", "Great!", "success");
+      }
+      let link = `http://localhost:3000/db/create/${this.form.username}/ ${this.form.email}/${this.form.password}`;
+      jquery.ajax({
+          url: link,
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        .then(response => {
+          alert(response.username);
+        });
     }
+  }
 };
 </script>
 

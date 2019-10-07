@@ -93,15 +93,35 @@ export default {
         year: this.info.year,
         schedule: this.info.schedule,
         room: this.info.room,
-        teacher: this.info.teacher,
+        teacher: this.info.teacher
       };
-      this.rows.push(object);
-      this.info.course = "";
-      this.info.year= "",
-      this.info.schedule = "";
-      this.info.room = "";
-      this.info.teacher = "";
-      
+      if (
+        this.info.course == "" ||
+        this.info.year == "" ||
+        this.info.schedule == "" ||
+        this.info.room == "" ||
+        this.info.teacher == "" 
+      ){
+        this.$swal.fire("Please provide inputs","Inputs are needed!","warning");
+      }else {
+        this.$swal.fire("Succesfully Added","Good Job!","success");
+        this.rows.push(object);
+        this.info.course = "";
+        this.info.year = "";
+        this.info.schedule = "";
+        this.info.room = "";
+        this.info.teacher = "";
+      }
+    },
+      removeItem(){
+      var object = {
+        course: this.info.course,
+        year: this.info.year,
+        schedule: this.info.schedule,
+        room: this.info.room,
+        teacher: this.info.teacher
+      }
+      this.rows.splice(object,1);
     }
   }
 };

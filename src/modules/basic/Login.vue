@@ -48,35 +48,54 @@
 <script>
 //eslint-disable-next-line
 /*eslint-disable*/
-import AUTH from 'services/auth'
- export default {
+import AUTH from "services/auth";
+import ROUTER from "router";
+import jquery from "jquery";
+export default {
   data() {
+    AUTH;
     return {
-      form: {
-       username: "",
-        password: "",
-        // checked: []
-      },
-      show: true
+      username: "",
+      password: ""
     };
   },
   methods: {
-    onSubmit(evt) {
-      evt.preventDefault();
-      let user = AUTH.login(this.form.email, this.form.password)
+    submit: function(e) {
+      e.preventDefault();
+      let user = AUTH.login(this.username, this.password);
       if (this.username == "" || this.password == "") {
-        alert("Please provide inputs!");
-      }else{
-        alert("You are now registered")
-        ROUTER.push('/Register')
+        this.$swal.fire(
+          "Please provide inputs",
+          "Inputs are required!",
+          "warning"
+        );
+      } else {
+        this.$swal.fire(
+          "Please register first!",
+          "You are need to register!",
+          "error"
+        );
         AUTH.setUser(user);
         if (user !== null) {
+          this.$swal.fire("Successfully Login!", "Great!", "success");
           ROUTER.push("/Dashboard");
         }
       }
+      let link = `http://localhost:3000/db/create/$`;
+      jquery.ajax({
+          url: link,
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*"
+          }
+        })
+        .then(response => {
+          alert(response.username);
+        });
     }
   }
 };
+</script>
 </script>
 
 

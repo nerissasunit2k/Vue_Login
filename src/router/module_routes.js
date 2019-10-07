@@ -1,13 +1,24 @@
-import AUTH from '../services/auth'
-let beforeEnter = (to ,from ,next) => {
+// import AUTH from '../services/auth'
+// let beforeEnter = (to ,from ,next) => {
 
- AUTH.currentPath = to.path
-// let userID = parseInt(localStorage.getItem('account_id'))
-// let token  = localStorage.getItem('usertoken')
-// // if(token !== null && )
-//console.log();
-next()
+//  AUTH.currentPath = to.path
+// // let userID = parseInt(localStorage.getItem('account_id'))
+// // let token  = localStorage.getItem('usertoken')
+// // // if(token !== null && )
+// //console.log();
+// next()
 
+// }
+let beforeEnter = (to, from, next) => {
+    if (to.meta.tokenRequired === true) {
+        if (sessionStorage.getItem('Password') !== null) {
+            next();
+        } else {
+            next({ path: '/Login' })
+        }
+    } else {
+        next()
+    }
 }
 
 var devRoutes = [] ;

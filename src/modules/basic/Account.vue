@@ -1,23 +1,30 @@
 <template>
-  <div>
-    <br>
-    <br>
-    <div class="mt-3">
-      <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-        <b-row no-gutters>
-          <b-col md="5">
-            <b-card-img :src="require('assets/Nerissa.png')" class="rounded-0" id="userIcon"></b-card-img>
-          </b-col>
-          <b-col md="7">
-            <b-card-body title="Personal Information">
-              <b-card-text>Name: {{Uname}}</b-card-text>
-              <b-card-text>Email: {{Email}}</b-card-text>
-              <b-card-text>Password: ******</b-card-text>
-            </b-card-body>
-          </b-col>
-        </b-row>
-      </b-card>
-    </div>
+  <div id="container">
+    <center>
+      <div id="card">
+        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
+          <b-row no-gutters>
+            <b-col md="6">
+              <b-card-img :src="require('assets/Nerissa.png')" class="rounded-0" id="userIcon"></b-card-img>
+            </b-col>
+            <b-col md="6">
+              <b-card-body title="Personal Info">
+                <hr>
+                <b-card-text>
+                  <h6>Username: {{username}}</h6>
+                  <h6>Email: {{email}}</h6>
+                  <h6 type="password">Password: {{password}}</h6>
+                </b-card-text>
+                <center>
+                  <p>Do you want to edit your account?</p>
+                  <router-link to="/Update">Edit</router-link>
+                </center>
+              </b-card-body>
+            </b-col>
+          </b-row>
+        </b-card>
+      </div>
+    </center>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -49,5 +56,10 @@ export default {
       Pass: sessionStorage.getItem("Password")
     };
   },
+methods: {
+    update: function() {
+      AUTH.update(this.username, this.email, this.password);
+    }
+  }
 };
 </script>

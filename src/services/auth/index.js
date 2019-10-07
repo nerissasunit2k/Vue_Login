@@ -9,12 +9,17 @@ export default {
     getUser(user){
         return this.user = user;
     },
-    register(username, password){
-        this.registeredUser.push({
-            username: username,
-            password: password,
-        })
-        ROUTER.push('/login')
+    register(username, password, email, confirmpassword) {
+        if (username == '' || password == '' || email == '' || password != confirmpassword) {
+            ROUTER.push("/Register")
+        } else {
+            this.registeredUser.push({
+                username: username,
+                password: password,
+                email: email
+            });
+            ROUTER.push("/Login");
+        }
     },
     login( username , password ){
         for(let i = 0; i < this.registeredUser.length; i++){
@@ -38,6 +43,11 @@ export default {
             teacher: teacher,
         });
     
+    },
+    update(username,password) {
+        this.username =username;
+        this.password =password;
+        ROUTER.push('/Update')
     },
     save(username, email, password) {
         for (let i = 0; i < this.registeredUser.length; i++) {
